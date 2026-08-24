@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادات جمعية سيدي أبي العباس المرسي - العرض النيون البراق</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;800;900&display=swap');
+
+        :root {
+            --bg-deep: #030712;
+            --neon-cyan: #00f0ff;
+            --neon-pink: #ff007f;
+            --neon-yellow: #ffe600;
+            --neon-purple: #9d00ff;
+            --neon-green: #00ff66;
+            --neon-orange: #ff6600;
+            --neon-blue: #0066ff;
+            --neon-red: #ff0033;
+            --neon-lime: #bfff00;
+            --neon-teal: #00ffcc;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-deep);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(0, 240, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 85%, rgba(255, 0, 127, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(157, 0, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .neon-ticker {
+            width: 100%;
+            background: rgba(3, 7, 18, 0.9);
+            border-bottom: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            padding: 15px 0;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.4em;
+            font-weight: 900;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 10px var(--neon-yellow), 0 0 20px rgba(255, 230, 0, 0.5);
+            animation: tickerMove 30s linear infinite;
+        }
+
+        @keyframes tickerMove {
+            0% { transform: translateX(-100vw); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 20px 20px;
+            position: relative;
+        }
+
+        .bismillah-glow {
+            font-size: 3em;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 20px var(--neon-yellow), 0 0 40px var(--neon-yellow);
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            margin: 0 0 15px 0;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.5));
+        }
+
+        .reg-badge {
+            display: inline-block;
+            border: 2px solid var(--neon-pink);
+            padding: 8px 30px;
+            border-radius: 40px;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 800;
+            box-shadow: 0 0 15px var(--neon-pink), inset 0 0 15px var(--neon-pink);
+            background: rgba(255, 0, 127, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .contact-phones {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .phone-pill {
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: 900;
+            background: rgba(0, 240, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .grid-container {
+            max-width: 1300px;
+            margin: 50px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            perspective: 1000px;
+        }
+
+        .neon-card {
+            background: rgba(10, 15, 30, 0.7);
+            border: 2px solid var(--card-color, var(--neon-cyan));
+            border-radius: 25px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 20px var(--card-glow, rgba(0, 240, 255, 0.2)), inset 0 0 15px var(--card-glow, rgba(0, 240, 255, 0.1));
+            backdrop-filter: blur(10px);
+        }
+
+        .neon-card:hover {
+            transform: translateY(-15px) scale(1.03) rotateX(5deg);
+            box-shadow: 0 0 40px var(--card-color), inset 0 0 25px var(--card-color);
+            background: rgba(20, 25, 45, 0.9);
+        }
+
+        .icon-box {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            display: inline-block;
+            filter: drop-shadow(0 0 15px var(--card-color));
+        }
+
+        .neon-card h3 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.2em;
+            font-weight: 900;
+            margin: 0 0 10px 0;
+            color: #fff;
+            text-shadow: 0 0 10px var(--card-color);
+        }
+
+        .neon-card p {
+            color: #ddd;
+            font-size: 1.1em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .features-section {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 45px;
+            background: rgba(15, 10, 30, 0.8);
+            border: 3px solid var(--neon-purple);
+            border-radius: 35px;
+            box-shadow: 0 0 40px rgba(157, 0, 255, 0.4), inset 0 0 30px rgba(157, 0, 255, 0.2);
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-family: 'Tajawal', sans-serif;
+            color: var(--neon-yellow);
+            font-size: 3em;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px var(--neon-yellow);
+        }
+
+        .features-flex {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .feature-item {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--neon-green);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+        }
+
+        .feature-item h4 {
+            color: var(--neon-green);
+            font-size: 1.8em;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .feature-item p {
+            font-size: 1.25em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .insurance-box {
+            background: rgba(0, 240, 255, 0.05);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+        }
+
+        .insurance-box h3 {
+            color: var(--neon-cyan);
+            font-size: 2.2em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .insurance-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.3em;
+            font-weight: 700;
+            line-height: 1.8;
+            text-align: right;
+            display: inline-block;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-neon-box {
+            background: rgba(10, 15, 30, 0.95);
+            border: 3px solid var(--modal-color, var(--neon-cyan));
+            width: 95%;
+            max-width: 950px;
+            border-radius: 35px;
+            padding: 45px;
+            transform: scale(0.6) translateY(60px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 50px var(--modal-color, var(--neon-cyan)), inset 0 0 30px var(--modal-color, var(--neon-cyan));
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-neon-box {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .close-neon-btn {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            background: var(--neon-pink);
+            color: #fff;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2em;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .modal-header-title {
+            text-align: center;
+            font-family: 'Tajawal', sans-serif;
+            color: var(--modal-color, var(--neon-cyan));
+            font-size: 3em;
+            font-weight: 900;
+            margin-bottom: 35px;
+            text-shadow: 0 0 20px var(--modal-color, var(--neon-cyan));
+            border-bottom: 2px dashed rgba(255,255,255,0.2);
+            padding-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        th {
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--modal-color, var(--neon-cyan));
+            padding: 20px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.4em;
+            font-weight: 900;
+            border-bottom: 3px solid var(--modal-color, var(--neon-cyan));
+            text-shadow: 0 0 10px var(--modal-color, var(--neon-cyan));
+            text-align: center;
+        }
+
+        td {
+            background: rgba(20, 25, 45, 0.8);
+            padding: 20px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.2em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        tr:hover td {
+            background: rgba(40, 50, 80, 0.9);
+            color: var(--modal-color, var(--neon-cyan));
+            box-shadow: 0 0 20px var(--modal-color, var(--neon-cyan));
+        }
+
+        td:first-child { border-radius: 0 15px 15px 0; border-right: 5px solid var(--modal-color, var(--neon-cyan)); }
+        td:last-child { border-radius: 15px 0 0 15px; }
+
+        .home-badge-neon {
+            display: inline-block;
+            background: var(--neon-pink);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 900;
+            box-shadow: 0 0 10px var(--neon-pink);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="neon-ticker" dir="ltr">
+    <div class="ticker-content" dir="rtl">
+        ⚡ نرحب بكم في عيادات جمعية أبي العباس المرسي الخيرية .. رعاية طبية متكاملة ونخبة من ألمع الاستشاريين والأخصائيين بالإسكندرية ⚡
+    </div>
+</div>
+
+<div class="header">
+    <div class="bismillah-glow">﷽</div>
+    <h1>عيادات جمعية سيدي أبي العباس المرسي</h1>
+    <div class="reg-badge">مشهرة برقم ٤٠٣ - ١٩٧٢</div>
+    <div class="contact-phones">
+        <div class="phone-pill">☎ ت: ٤٨١٤٠٢٢</div>
+        <div class="phone-pill">📱 م: ٠١٢٠٠١٩٣١٥٨</div>
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="neon-card" style="--card-color: var(--neon-cyan); --card-glow: rgba(0, 240, 255, 0.3);" onclick="openModal('batin')">
+        <div class="icon-box">🩺</div>
+        <h3>عيادة الباطن والكلى</h3>
+        <p>استشاريون وأخصائيون باطنة وكلى</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-pink); --card-glow: rgba(255, 0, 127, 0.3);" onclick="openModal('ENT')">
+        <div class="icon-box">👂</div>
+        <h3>أنف وأذن وحنجرة</h3>
+        <p>استشاري أنف وأذن</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-yellow); --card-glow: rgba(255, 230, 0, 0.3);" onclick="openModal('kids')">
+        <div class="icon-box">👶</div>
+        <h3>عيادة الأطفال</h3>
+        <p>استشاري طب الأطفال</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-orange); --card-glow: rgba(255, 102, 0, 0.3);" onclick="openModal('bones')">
+        <div class="icon-box">🦴</div>
+        <h3>عيادة العظام</h3>
+        <p>استشاري جراحة العظام (متاح زيارات منزلية)</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-purple); --card-glow: rgba(157, 0, 255, 0.3);" onclick="openModal('obgyn')">
+        <div class="icon-box">🤱</div>
+        <h3>نسا وتوليد</h3>
+        <p>أخصائي النساء والتوليد</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-green); --card-glow: rgba(0, 255, 102, 0.3);" onclick="openModal('skin')">
+        <div class="icon-box">🌿</div>
+        <h3>عيادة الجلدية</h3>
+        <p>أخصائي الأمراض الجلدية</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-teal); --card-glow: rgba(0, 255, 204, 0.3);" onclick="openModal('eyes')">
+        <div class="icon-box">👁️</div>
+        <h3>عيادة الرمد (عيون)</h3>
+        <p>استشاري العيون والرمّد</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-blue); --card-glow: rgba(0, 102, 255, 0.3);" onclick="openModal('urology')">
+        <div class="icon-box">🔬</div>
+        <h3>مسالك بولية</h3>
+        <p>استشاري المسالك البولية</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-lime); --card-glow: rgba(191, 255, 0, 0.3);" onclick="openModal('physio')">
+        <div class="icon-box">⚡</div>
+        <h3>العلاج الطبيعي والتغذية</h3>
+        <p>أخصائي علاج طبيعي وتغذية (متاح زيارات منزلية)</p>
+    </div>
+    <div class="neon-card" style="--card-color: var(--neon-red); --card-glow: rgba(255, 0, 51, 0.3);" onclick="openModal('dental')">
+        <div class="icon-box">🦷</div>
+        <h3>عيادة الأسنان</h3>
+        <p>نخبة من استشاريي وأخصائيي الأسنان</p>
+    </div>
+</div>
+
+<div class="features-section">
+    <h2>خدمات ومفاجآت استثنائية</h2>
+    <div class="features-flex">
+        <div class="feature-item">
+            <h4>🏋️♀️ جيم نسائي متطور</h4>
+            <p>متاح يومياً من 5 مساءً إلى 10 مساءً</p>
+        </div>
+        <div class="feature-item">
+            <h4>⚡ جلسات تفتيت الدهون</h4>
+            <p>بأحدث الأجهزة وأطقم طبية ممتازة</p>
+        </div>
+    </div>
+    <div class="insurance-box">
+        <h3>يسعدنا انضمام أعضاء صندوق التأمين الخاص</h3>
+        <ul>
+            <li>للعاملين بمصلحتي الجمارك والضرائب المصرية (القيمة المضافة)</li>
+            <li>والعاملين بهيئتي ميناء الإسكندرية والدخيلة (القيمة المضافة)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Modals -->
+<div class="modal-overlay" id="modal-batin" onclick="closeOnOverlay(event, 'modal-batin')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-cyan);">
+        <span class="close-neon-btn" onclick="closeModal('modal-batin')">&times;</span>
+        <h2 class="modal-header-title">عيادات الباطن والكلى</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ مجدي محسن</td><td>استشاري باطن عام</td><td>طوال أيام الأسبوع</td><td>من ٦ م إلى ٨ م</td></tr>
+            <tr><td>د/ إبراهيم علي عوض</td><td>أخصائي</td><td>طوال أيام الأسبوع عدا الثلاثاء</td><td>من ٦ م إلى ٨ م</td></tr>
+            <tr><td>د/ كريم بلال</td><td>أخصائي (باطن - كلى)</td><td>الثلاثاء</td><td>من ٥ م إلي ٩ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-ENT" onclick="closeOnOverlay(event, 'modal-ENT')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-pink);">
+        <span class="close-neon-btn" onclick="closeModal('modal-ENT')">&times;</span>
+        <h2 class="modal-header-title">عيادة أنف وأذن وحنجرة</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ أشرف زيان</td><td>استشاري</td><td>السبت - الاربعاء</td><td>من ٨ مساءً</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-kids" onclick="closeOnOverlay(event, 'modal-kids')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-yellow);">
+        <span class="close-neon-btn" onclick="closeModal('modal-kids')">&times;</span>
+        <h2 class="modal-header-title">عيادة الأطفال</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ غادة فاروق</td><td>استشاري</td><td>الاحد - الثلاثاء - الخميس</td><td>من ٨:٣٠ م إلي ١٠ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-bones" onclick="closeOnOverlay(event, 'modal-bones')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-orange);">
+        <span class="close-neon-btn" onclick="closeModal('modal-bones')">&times;</span>
+        <h2 class="modal-header-title">عيادة العظام</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ عصام الدين ممتاز</td><td>استشاري<br><span class="home-badge-neon">زيارات منزلية متاحة</span></td><td>السبت - الاثنين - الاربعاء</td><td>من ٧ م إلى ٨ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-obgyn" onclick="closeOnOverlay(event, 'modal-obgyn')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-purple);">
+        <span class="close-neon-btn" onclick="closeModal('modal-obgyn')">&times;</span>
+        <h2 class="modal-header-title">عيادة نسا وتوليد</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ احمد هانئ</td><td>أخصائي</td><td>الاحد - الاثنين - الثلاثاء</td><td>من ٧ م إلى ٩ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-skin" onclick="closeOnOverlay(event, 'modal-skin')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-green);">
+        <span class="close-neon-btn" onclick="closeModal('modal-skin')">&times;</span>
+        <h2 class="modal-header-title">عيادة الجلدية</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ محمود السيد</td><td>أخصائي</td><td>السبت - الاثنين - الاربعاء</td><td>من ٨:٣٠ م إلي ٩:٣٠ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-eyes" onclick="closeOnOverlay(event, 'modal-eyes')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-teal);">
+        <span class="close-neon-btn" onclick="closeModal('modal-eyes')">&times;</span>
+        <h2 class="modal-header-title">عيادة الرمد (عيون)</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ آمال عبد العظيم</td><td>استشاري</td><td>السبت - الاثنين - الاربعاء</td><td>من ٣:٣٠ م إلى ٥:٣٠ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-urology" onclick="closeOnOverlay(event, 'modal-urology')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-blue);">
+        <span class="close-neon-btn" onclick="closeModal('modal-urology')">&times;</span>
+        <h2 class="modal-header-title">عيادة المسالك البولية</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ يسري أبو سعده</td><td>استشاري</td><td>الأحد - الخميس</td><td>من ٣ م إلي ٥ م</td></tr>
+            <tr><td>د/ يسري أبو سعده</td><td>استشاري</td><td>الثلاثاء</td><td>من ٨ م إلى ٩ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-physio" onclick="closeOnOverlay(event, 'modal-physio')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-lime);">
+        <span class="close-neon-btn" onclick="closeModal('modal-physio')">&times;</span>
+        <h2 class="modal-header-title">العلاج الطبيعي والتغذية</h2>
+        <p style="text-align:center; color: var(--neon-lime); font-weight:900; font-size:1.2em; text-shadow: 0 0 10px var(--neon-lime); margin-top:-15px; margin-bottom:25px;">⚡ متاح زيارات منزلية للعلاج الطبيعي ⚡</p>
+        <table>
+            <tr><th>المختص</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ حازم فتحي</td><td>أخصائي علاج طبيعي<br><span class="home-badge-neon">زيارات منزلية متاحة</span></td><td>الاحد - الثلاثاء - الخميس</td><td>من ٤ م إلى ١٠ م</td></tr>
+            <tr><td>د/ ريم العدل</td><td>أخصائي تغذية</td><td>الاثنين - الأربعاء</td><td>من ٧ م إلى ٨ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-dental" onclick="closeOnOverlay(event, 'modal-dental')">
+    <div class="modal-neon-box" style="--modal-color: var(--neon-red);">
+        <span class="close-neon-btn" onclick="closeModal('modal-dental')">&times;</span>
+        <h2 class="modal-header-title">عيادة الأسنان</h2>
+        <table>
+            <tr><th>الطبيب المعالج</th><th>التخصص</th><th>الأيام</th><th>المواعيد</th></tr>
+            <tr><td>د/ يسري صالح</td><td>استشاري</td><td>السبت - الاثنين - الاربعاء</td><td>من ٧ م إلي ١٠:٣٠ م</td></tr>
+            <tr><td>د/ شريهان محمد</td><td>أخصائي</td><td>السبت - الاثنين - الخميس</td><td>من ٣ م إلي ٦ م</td></tr>
+            <tr><td>د/ مصطفي أشرف</td><td>أخصائي</td><td>الاحد - الثلاثاء - الأربعاء - الخميس</td><td>من ٦:٣٠ م إلى ٩ م</td></tr>
+            <tr><td>د/ محمد إيهاب</td><td>أخصائي</td><td>السبت - الاثنين</td><td>من ٧ م إلى ١٠ م</td></tr>
+            <tr><td>د/ محمد إيهاب</td><td>أخصائي</td><td>الثلاثاء</td><td>من ٣ م إلي ٦ م</td></tr>
+            <tr><td>د/ ابتسام محمود</td><td>أخصائي</td><td>الاحد - الخميس</td><td>من ٧ م إلي ١٠ م</td></tr>
+            <tr><td>د/ مروة محمد</td><td>أخصائي</td><td>الثلاثاء - الأربعاء - الخميس</td><td>من ٣ م إلي ٦ م</td></tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function openModal(type) {
+        document.getElementById('modal-' + type).classList.add('active');
+    }
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+    function closeOnOverlay(event, id) {
+        if (event.target.id === id) { closeModal(id); }
+    }
+</script>
+
+</body>
+</html>
